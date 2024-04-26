@@ -54,7 +54,9 @@ const Conversation = ({
       };
       setTrigger(trigger + 1);
 
-      toast(`${newmessage.message} sent by ${newmessage.senderUsername}`);
+      toast.success(
+        `${newmessage.message} sent by ${newmessage.senderUsername}`
+      );
 
       if (selectedConversation._id === newmessage.sender_id) {
         setMessages([...messages, message]);
