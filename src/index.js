@@ -7,12 +7,10 @@ import { BrowserRouter } from "react-router-dom";
 import reportWebVitals from "./reportWebVitals";
 import { UserContextProvider } from "./extracomponents/Context";
 import { SocketContextProvider } from "./extracomponents/SocketContext";
-import { Notifications } from "react-push-notification";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <>
-    <Notifications />
     <UserContextProvider>
       <SocketContextProvider>
         <BrowserRouter>
