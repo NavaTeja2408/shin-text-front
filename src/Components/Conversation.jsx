@@ -194,7 +194,7 @@ const Conversation = ({ trigger, setAddConversation, setUsers }) => {
             marginTop: 2,
           }}
         >
-          {convos?.length > 0 ? (
+          {convos && Array.isArray(convos) ? (
             convos
               .filter((item) => {
                 return search === ""
