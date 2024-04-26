@@ -1,14 +1,26 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import App from "./App";
+import { BrowserRouter } from "react-router-dom";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+import reportWebVitals from "./reportWebVitals";
+import { UserContextProvider } from "./extracomponents/Context";
+import { SocketContextProvider } from "./extracomponents/SocketContext";
+import { Notifications } from "react-push-notification";
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+  <>
+    <Notifications />
+    <UserContextProvider>
+      <SocketContextProvider>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </SocketContextProvider>
+    </UserContextProvider>
+  </>
 );
 
 // If you want to start measuring performance in your app, pass a function
