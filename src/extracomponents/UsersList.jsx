@@ -103,54 +103,58 @@ const UsersList = ({ users, trigger, setState, setPopup, convos }) => {
             overflowY: "auto",
           }}
         >
-          {users
-            .filter((item) => {
-              return (
-                item._id !== authUser.id &&
-                !convos.some((convo) => convo._id === item._id)
-              );
-            })
-            .filter((item) => {
-              return search === ""
-                ? true // Return true for all items when search string is empty
-                : item?.username
-                    ?.toLowerCase()
-                    .startsWith(search.toLowerCase());
-            })
-            .map((items) => {
-              return (
-                <>
-                  <ListItem
-                    fullWidth
-                    onClick={() => handleOnClick(items)}
-                    key={items._id}
-                  >
-                    <ListItemButton>
-                      <ListItemAvatar>
-                        <Avatar
-                          sx={{
-                            width: "3rem",
-                            height: "3rem",
-                          }}
-                          src={items.avatar?.url}
-                        />
-                      </ListItemAvatar>
-                      <ListItemText>
-                        <Typography variant="h6">{items.username}</Typography>
-                      </ListItemText>
-                      <ListItemIcon>
-                        <AddCircleIcon
-                          sx={{
-                            color: "blueviolet",
-                          }}
-                        />
-                      </ListItemIcon>
-                    </ListItemButton>
-                  </ListItem>
-                  <Divider component="li" />
-                </>
-              );
-            })}
+          {users && Array.isArray(users) ? (
+            users
+              .filter((item) => {
+                return (
+                  item._id !== authUser.id &&
+                  !convos.some((convo) => convo._id === item._id)
+                );
+              })
+              .filter((item) => {
+                return search === ""
+                  ? true // Return true for all items when search string is empty
+                  : item?.username
+                      ?.toLowerCase()
+                      .startsWith(search.toLowerCase());
+              })
+              .map((items) => {
+                return (
+                  <>
+                    <ListItem
+                      fullWidth
+                      onClick={() => handleOnClick(items)}
+                      key={items._id}
+                    >
+                      <ListItemButton>
+                        <ListItemAvatar>
+                          <Avatar
+                            sx={{
+                              width: "3rem",
+                              height: "3rem",
+                            }}
+                            src={items.avatar?.url}
+                          />
+                        </ListItemAvatar>
+                        <ListItemText>
+                          <Typography variant="h6">{items.username}</Typography>
+                        </ListItemText>
+                        <ListItemIcon>
+                          <AddCircleIcon
+                            sx={{
+                              color: "blueviolet",
+                            }}
+                          />
+                        </ListItemIcon>
+                      </ListItemButton>
+                    </ListItem>
+                    <Divider component="li" />
+                  </>
+                );
+              })
+          ) : (
+            <div></div>
+          )}
         </List>
       </Container>
     </>
