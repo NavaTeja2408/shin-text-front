@@ -20,6 +20,7 @@ import PropTypes from "prop-types";
 import { SocketContext } from "../extracomponents/SocketContext.jsx";
 import { StyledBadge } from "../Styles/StylesComponent.jsx";
 import AddCommentIcon from "@mui/icons-material/AddComment";
+import toast from "react-hot-toast";
 
 const Conversation = ({
   trigger,
@@ -52,6 +53,8 @@ const Conversation = ({
         createdAt: newmessage.createdAt,
       };
       setTrigger(trigger + 1);
+
+      toast(`${newmessage.message} sent by ${newmessage.senderUsername}`);
 
       if (selectedConversation._id === newmessage.sender_id) {
         setMessages([...messages, message]);
