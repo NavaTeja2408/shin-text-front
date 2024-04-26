@@ -93,6 +93,7 @@ const Home = () => {
         >
           <Conversation
             trigger={trigger}
+            setTrigger={setTrigger}
             addCoanversation={addCoanversation}
             setAddConversation={setAddConversation}
             users={users}

@@ -21,7 +21,12 @@ import { SocketContext } from "../extracomponents/SocketContext.jsx";
 import { StyledBadge } from "../Styles/StylesComponent.jsx";
 import AddCommentIcon from "@mui/icons-material/AddComment";
 
-const Conversation = ({ trigger, setAddConversation, setUsers }) => {
+const Conversation = ({
+  trigger,
+  setAddConversation,
+  setUsers,
+  setTrigger,
+}) => {
   const {
     setMessages,
     messages,
@@ -46,6 +51,8 @@ const Conversation = ({ trigger, setAddConversation, setUsers }) => {
         message: newmessage.message,
         createdAt: newmessage.createdAt,
       };
+      setTrigger(trigger + 1);
+
       if (selectedConversation._id === newmessage.sender_id) {
         setMessages([...messages, message]);
       }
