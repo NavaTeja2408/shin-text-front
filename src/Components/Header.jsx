@@ -26,7 +26,7 @@ const Header = ({ setProfile }) => {
         withCredentials: true,
       };
       const { data } = await axios.get(
-        `${window.location.origin}/api/auth/logout`,
+        `https://shintext.onrender.com/api/auth/logout`,
         config
       );
       if (data.error) {

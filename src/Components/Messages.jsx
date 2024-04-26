@@ -38,7 +38,7 @@ const Messages = () => {
         withCredentials: true,
       };
       const { data } = await axios.post(
-        `${window.location.origin}/api/chat/message/${selectedConversation._id}`,
+        `https://shintext.onrender.com/api/chat/message/${selectedConversation._id}`,
         { textmessage: messageValue },
         config
       );
@@ -70,7 +70,7 @@ const Messages = () => {
             withCredentials: true,
           };
           const { data } = await axios.get(
-            `http://localhost:8000/api/chat/getconvo/${selectedConversation?._id}`,
+            `https://shintext.onrender.com/api/chat/getconvo/${selectedConversation?._id}`,
             config
           );
           if (data.error) {

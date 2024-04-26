@@ -45,7 +45,7 @@ const SignUp = () => {
     formData.append("cpassword", cpassword);
     try {
       const { data } = await axios.post(
-        `${window.location.origin}/api/auth/signup`,
+        `https://shintext.onrender.com/api/auth/signup`,
         formData,
         config
       );

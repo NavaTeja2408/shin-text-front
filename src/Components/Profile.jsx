@@ -34,7 +34,7 @@ const Profile = () => {
         withCredentials: true,
       };
       const { data } = await axios.delete(
-        `${window.location.origin}/api/chat/deleteacc`,
+        `https://shintext.onrender.com/api/chat/deleteacc`,
         config
       );
 

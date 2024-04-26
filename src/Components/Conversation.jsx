@@ -98,7 +98,7 @@ const Conversation = ({ trigger, setAddConversation, setUsers }) => {
           withCredentials: true,
         };
         const { data } = await axios.get(
-          `${window.location.origin}/api/chat/getusers`,
+          `https://shintext.onrender.com/api/chat/getusers`,
           config
         );
         if (data.error) {
@@ -123,7 +123,7 @@ const Conversation = ({ trigger, setAddConversation, setUsers }) => {
       };
       setAddConversation(true);
       const { data } = await axios.get(
-        `${window.location.origin}/api/chat/getdata`,
+        `https://shintext.onrender.com/api/chat/getdata`,
         config
       );
       setUsers(data);

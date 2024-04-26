@@ -11,7 +11,7 @@ export const SocketContextProvider = ({ children }) => {
 
   useEffect(() => {
     if (authUser) {
-      const socket = io(`${window.location.origin}`, {
+      const socket = io(`https://shintext.onrender.com`, {
         query: {
           userId: authUser.id,
         },

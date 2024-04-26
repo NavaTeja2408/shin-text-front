@@ -29,7 +29,7 @@ const UsersList = ({ users, trigger, setState, setPopup, convos }) => {
         withCredentials: true,
       };
       const { data } = await axios.post(
-        `${window.location.origin}/api/chat/coversation/${items._id}`,
+        `https://shintext.onrender.com/api/chat/coversation/${items._id}`,
         {},
         config
       );

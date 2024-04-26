@@ -27,7 +27,7 @@ const Login = () => {
         withCredentials: true,
       };
       const { data } = await axios.post(
-        `${window.location.origin}/api/auth/login`,
+        `https://shintext.onrender.com/api/auth/login`,
         { email, password },
         config
       );
