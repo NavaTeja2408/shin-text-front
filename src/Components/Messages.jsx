@@ -90,7 +90,7 @@ const Messages = () => {
       }
     };
     handleOnClick();
-  }, [trigger, messages, setMessages, selectedConversation?._id]);
+  }, [trigger, setMessages, selectedConversation?._id]);
   const isOnline = onlineUsers.includes(selectedConversation?._id);
 
   return (
