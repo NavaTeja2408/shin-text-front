@@ -56,6 +56,10 @@ const SignUp = () => {
       } else {
         // localStorage.setItem("chat-user", JSON.stringify(data));
         // setAuthUser(data);
+        setPassword("");
+        setEmail("");
+        setCPassword("");
+        setUsername("");
         toast.success("Login to Acess Account", {
           style: { backgroundColor: "rgba(20,22,25 , 0.4)", color: "white" },
         });
@@ -64,10 +68,6 @@ const SignUp = () => {
     } catch (error) {
       console.log(error);
     } finally {
-      setPassword("");
-      setEmail("");
-      setCPassword("");
-      setUsername("");
       setLoading(false);
     }
   };
