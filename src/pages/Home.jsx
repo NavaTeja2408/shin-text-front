@@ -17,12 +17,7 @@ const Home = () => {
   const [trigger, setTrigger] = useState(0);
 
   return (
-    <div
-      className="h-screen w-full"
-      style={{
-        overflow: hidden,
-      }}
-    >
+    <div className="h-screen w-full">
       <Header setProfile={setProfile} />
       {profile && <Profile />}
       {addCoanversation ? (

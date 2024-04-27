@@ -15,6 +15,7 @@ function App() {
       className="w-full h-screen"
       style={{
         backgroundColor: "rgba(0,0,0,0.8)",
+        overflow: "hidden",
       }}
     >
       <Toaster
