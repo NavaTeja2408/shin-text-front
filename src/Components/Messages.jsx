@@ -154,13 +154,7 @@ const Messages = () => {
                   }}
                 />
               </IconButton>
-              <IconButton
-                onClick={() => {
-                  setCard(true);
-                }}
-              >
-                <Avatar alt="Image" src={selectedConversation?.avatar?.url} />
-              </IconButton>
+              <Avatar alt="Image" src={selectedConversation?.avatar?.url} />
 
               <Typography variant="h6">
                 {selectedConversation?.username}
