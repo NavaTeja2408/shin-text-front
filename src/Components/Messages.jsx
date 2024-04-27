@@ -5,6 +5,7 @@ import {
   Typography,
   TextField,
   IconButton,
+  CircularProgress,
   LinearProgress,
 } from "@mui/material";
 import React, { useContext, useEffect, useState, useRef } from "react";
@@ -29,10 +30,12 @@ const Messages = () => {
   const [messageValue, setMessageValue] = useState("");
   const [trigger, setTrigger] = useState(0);
   const [loading, setLoading] = useState(false);
+  const [messageLoad, setMessageLoad] = useState(false);
   const endOfMessagesRef = useRef(null);
 
   const handleSendMessage = async (e) => {
     e.preventDefault();
+    setMessageLoad(true);
     try {
       const config = {
         withCredentials: true,
@@ -48,10 +51,11 @@ const Messages = () => {
         console.log(data);
         setTrigger(trigger + 1);
         setMessageValue("");
-        toast.success("Message Sent Successfully");
       }
     } catch (error) {
       console.log(error);
+    } finally {
+      setMessageLoad(false);
     }
   };
 
@@ -60,6 +64,10 @@ const Messages = () => {
       endOfMessagesRef.current?.scrollIntoView({ behavior: "smooth" });
     }, 100);
   }, [selectedConversation?._id, messages]);
+
+  useEffect(() => {
+    setMessages([]);
+  }, [selectedConversation?._id]);
 
   useEffect(() => {
     const handleOnClick = async () => {
@@ -100,6 +108,7 @@ const Messages = () => {
         padding: 0,
       }}
     >
+      {loading && <LinearProgress color="secondary" />}
       {selectedConversation ? (
         <Container
           sx={{
@@ -145,8 +154,14 @@ const Messages = () => {
                   }}
                 />
               </IconButton>
+              <IconButton
+                onClick={() => {
+                  setCard(true);
+                }}
+              >
+                <Avatar alt="Image" src={selectedConversation?.avatar?.url} />
+              </IconButton>
 
-              <Avatar alt="Image" src={selectedConversation?.avatar?.url} />
               <Typography variant="h6">
                 {selectedConversation?.username}
               </Typography>
@@ -272,20 +287,24 @@ const Messages = () => {
                     },
                   }}
                 />
-                <IconButton
-                  sx={{
-                    marginLeft: 2,
-                    color: "white",
-                  }}
-                  type="submit"
-                >
-                  <SendIcon
+                {messageLoad ? (
+                  <CircularProgress color="secondary" />
+                ) : (
+                  <IconButton
                     sx={{
-                      width: "1.5rem",
-                      height: "1.5rem",
+                      marginLeft: 2,
+                      color: "white",
                     }}
-                  />
-                </IconButton>
+                    type="submit"
+                  >
+                    <SendIcon
+                      sx={{
+                        width: "1.5rem",
+                        height: "1.5rem",
+                      }}
+                    />
+                  </IconButton>
+                )}
               </Stack>
             </form>
           </Container>

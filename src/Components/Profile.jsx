@@ -21,7 +21,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
 
-const Profile = () => {
+const Profile = ({ setProfile }) => {
   const { authUser, setAuthUser } = useContext(UserContext);
   const [dialog, setDialog] = useState(false);
   const navigate = useNavigate();
@@ -102,7 +102,11 @@ const Profile = () => {
             position: "absolute",
             top: 5,
             left: 5,
+            "&:hover": {
+              bgcolor: "white",
+            },
           }}
+          onClick={() => setProfile(false)}
         >
           <ArrowBackIcon />
         </IconButton>

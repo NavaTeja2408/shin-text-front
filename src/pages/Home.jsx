@@ -13,6 +13,7 @@ const Home = () => {
   const [users, setUsers] = useState([]);
   const [addCoanversation, setAddConversation] = useState(false);
   const [profile, setProfile] = useState(false);
+  const [userLoad, setUserLoad] = useState(false);
 
   const [trigger, setTrigger] = useState(0);
 
@@ -24,7 +25,7 @@ const Home = () => {
       }}
     >
       <Header setProfile={setProfile} />
-      {profile && <Profile />}
+      {profile && <Profile setProfile={setProfile} />}
       {addCoanversation ? (
         <div>
           <Container
