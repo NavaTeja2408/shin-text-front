@@ -34,7 +34,7 @@ const Header = ({ setProfile }) => {
       } else {
         localStorage.removeItem("chat-user");
         setAuthUser();
-        toast.success("Successfully logedout");
+        toast.success("Successfully logged out");
       }
     } catch (error) {
       console.log(error);

@@ -167,7 +167,7 @@ const Login = () => {
                 variant="outlined"
                 fullWidth
               >
-                Signup instad
+                Signup insted
               </Button>
             </Link>
           </form>
